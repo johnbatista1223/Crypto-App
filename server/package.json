@@ -1,0 +1,18 @@
+{
+  "name": "user",
+  "version": "version(1.0.0)",
+  "description": "package",
+  "main": "index.js",
+  "repository": "https://github.com/johnbatista1223",
+  "author": "johnbatista",
+  "license": "mit",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15",
+    "sequelize": "^6.12.5"
+  }
+}

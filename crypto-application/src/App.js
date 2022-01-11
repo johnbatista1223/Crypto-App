@@ -31,7 +31,7 @@ const [allData , setAllData]=useState([])
     <div className="App">
       <BrowserRouter>
       <Routes>
-      <Route path="/" element={ <Login/>}/>
+      <Route path="/" element={ <Login fetchData={allData}/>}/>
       <Route path="/HomePage" element={ <HomePage fetchData={allData}/>}/>
   </Routes>
   </BrowserRouter>

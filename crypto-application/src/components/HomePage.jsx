@@ -49,13 +49,7 @@ return data.name.toLowerCase().includes(search.toLowerCase())
   <h5> Sorry No Matches</h5>
   :( <CryptoCoins 
     fetchAllData={fetchAllData}
-  
-    
     />
-    // fetchAllData.map(allData => (
-    // <h1 style={{color: '#e2e2e2'}} key={allData.id}>{allData.name}</h1>
-  // )
-  // )
   )}
   <Pagination/>
     </div>
