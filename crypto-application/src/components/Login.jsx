@@ -74,8 +74,10 @@ const Login = ({fetchData}) => {
       <img src={cardanoUrl} className='cardano' />
       <img src={rippleUrl} className='ripple' /> */}
       <h1 className='headingFont'>CRYPTO 's</h1>
-      {loading ? (<h1>Loading ...</h1>):
-      (<Form>
+     
+      {loading ? 
+      (<h1>Loading ...</h1>)
+      :(<Form>
         <LoginInput type="text" autocomplete="on" value={email} placeholder='Email ...'
         onChange={(e) => {
           setEmail(e.target.value)
@@ -87,6 +89,7 @@ const Login = ({fetchData}) => {
       <Button type="submit" value="Submit" onClick={ (e) => {
         e.preventDefault();
         setLoading(true)
+      
           if(email.length < 6 ||email.length === 0 || password === 0 ){
             alert('Email needs to be more than 7 characters long and cannot be left blank ')
           }                

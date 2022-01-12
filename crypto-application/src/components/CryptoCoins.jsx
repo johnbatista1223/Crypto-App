@@ -3,40 +3,45 @@ import styled from "styled-components";
 const Table = styled.table`
   height:50px;
   border:white;
-  margin-left:60px;
+  margin-left:90px;
   width: 90%;
 }
  
 `;
 const TableRow = styled.tr`
   height: 5.625rem;
-  border-top: 1px solid #81cdba;
+  display:flex;
+  justify-content:space-evenly;
 `;
-const TableHeader = styled.th`
-  color: #81cdba;
-  padding:20px
-   height: 10px;
-`;
+const TableData = styled.td`
+font-size:20px;
+color: white;
+`
 
-const CryptoCoins = ({fetchAllData}) => {
+const CryptoCoins = ({fetchAllData, indexOfFirstUser ,indexOfLastUser }) => {
   return (
     <div>   
       <Table>
 
-        {fetchAllData.map((data)=> (
+        {fetchAllData
+        .slice(indexOfFirstUser, indexOfLastUser)
+        .map((data)=> (
           <div>
             <div style={{borderTop: "1px solid #81cdba",width:'100%'}}></div>
     <br/>
   <TableRow key={data.id}>
-    <span><img src={data.image} style={{height:'20px'}} /></span>
-    <td>{data.name}</td>
-    <td>{data.symbol}</td>
-    <td>{data.current_price}</td>
-    
+    <span><img src={data.image} style={{height:'35px'}} /></span>
+    <TableData>{data.name}</TableData><br/>
+    <TableData>{data.symbol}</TableData>
+    <TableData>{data.current_price}</TableData>
+    <TableData>{data.total_volume.toLocaleString()}</TableData>
+    <TableData>{data.market_cap}</TableData>
+    {data.price_change_percentage_24h < 0 ? 
+    <TableData style={{color:'red'}}>{data.price_change_percentage_24h.toFixed(2)}%</TableData> :
+    <TableData style={{color:'green'}}>{data.price_change_percentage_24h.toFixed(2)}%</TableData> }
   </TableRow>
   </div>
-        ))}
-  
+        ))} 
 </Table>
     </div>
   )
