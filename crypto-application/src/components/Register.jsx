@@ -2,9 +2,7 @@ import React,{useState} from 'react'
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from 'axios'
-import {
-  Link
-} from "react-router-dom";
+
 const LoginInput = styled.input`
   padding-left: 16px;
   margin-bottom:25px;
@@ -48,37 +46,38 @@ margin-top: 120px;
     #2dca18 48%,
     #06680b 100%);
   `
+const BackButton = styled.button`
+ width: 90px;
+  color: white;
+  padding: 14px 20px;
 
-const Login = ({fetchData}) => {
+float:right;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background: -webkit-linear-gradient(-225deg,
+    #b5ce2a 0%,
+    #2dca18 48%,
+    #06680b 100%);
+`
+const Register = ({fetchData}) => {
   const [loading , setLoading]=useState(false);
   const [email , setEmail]=useState('');
   const [password , setPassword]=useState('');
  let navigate = useNavigate();
  console.log(fetchData)
-//  grab all images from image urls
-// const bitcoinUrl = fetchData[0].image;
-// const etherumUrl = fetchData[1].image;
-// const tetherUrl = fetchData[2].image;
-// const binancecoinUrl = fetchData[3].image;
-// const solanaUrl = fetchData[4].image;
-// const usdcoinUrl = fetchData[5].image;
-// const cardanoUrl = fetchData[6].image;
-// const rippleUrl = fetchData[7].image;
+
 
  
   return (
     <div>
-      {/* <img src={bitcoinUrl} className='bitcoin' />
-      <img src={etherumUrl} className='etherum' />
-      <img src={tetherUrl} className='teather' />
-      <img src={binancecoinUrl} className='binance' />
-      <img src={solanaUrl} className='solana' />
-      <img src={usdcoinUrl} className='usdcoin' />
-      <img src={cardanoUrl} className='cardano' />
-      <img src={rippleUrl} className='ripple' /> */}
-       <h1 className='heading'>Crypto's</h1>
+    
+    <h1 className='heading'>Crypto's</h1>
 
-      <h1 className='headingFont'>Login</h1>
+      <h1 className='headingFont'>Register</h1>
+      <BackButton onClick={() => {
+        navigate('/')
+      }}>back</BackButton>
      
       {loading ? 
       (<h1>Loading ...</h1>)
@@ -92,35 +91,34 @@ const Login = ({fetchData}) => {
       setPassword(e.target.value)
         }} /><br/>
 
+
       <Button type="submit" value="Submit" onClick={ (e) => {
         e.preventDefault();
         setLoading(true)
       
-          if(email.length < 6 ||email.length === 0 || password === 0 ){
+          if(email.length < 6 || email.length === 0 || password === 0 ){
             alert('Email needs to be more than 7 characters long and cannot be left blank ')
           }                
           if(password.length < 8 ){
             alert('password should be atleast more than 8 characters long')
           }         
           if(email.length > 6 && password.length > 8 ){
-            navigate('/HomePage')
+            navigate('/')
           }
           //push to database
           const sendUser ={
             email:email,
             password:password
           }
-          // axios.post('http://localhost:4000/login', sendUser) 
-          // .then(res => {
-          //   console.log(res)
-          // })
+          axios.post('http://localhost:4000/Register', sendUser) 
+          .then(res => {
+            console.log(res)
+          })
       }}/>
-      {/* <h3 className="notSignedIntext"> Not Signed Up Yet Click Link Below</h3> */}
-      <Link to='/Register'> <h2 className='signup'>Sign up</h2></Link>
       </Form>)}
   
     </div>
   )
 }
 
-export default Login
+export default Register

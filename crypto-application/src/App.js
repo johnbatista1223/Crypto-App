@@ -10,6 +10,7 @@ import HomePage from './components/HomePage';
 import axios from 'axios'
 import{ useEffect,useState } from 'react'
 import Profile from './components/Profile'
+import Register from './components/Register'
 
 
 
@@ -36,9 +37,11 @@ const [allData , setAllData]=useState([])
       <BrowserRouter>
       <Routes>
       <Route path="/" element={<Login fetchData={allData} />}/>
+       <Route path="/Register" element={ <Register/>}/>
       <Route path="/HomePage" element={ <HomePage fetchData={allData}/>}/>
       <Route path="/Profile" element={ <Profile/>}/>
-     
+ 
+
 
   </Routes>
   </BrowserRouter>

@@ -2,6 +2,27 @@
 .App {
   text-align: center;
 }
+
+
+.heading{
+  font-family: 'The Nautigal', cursive;
+  left: 0;
+  line-height: 200px;
+    margin-top: -450px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 100%;
+    background: -webkit-linear-gradient(-225deg,
+    #b5ce2a 0%,
+    #2dca18 48%,
+    #06680b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 200px;
+  font-weight:bold;
+}
 .headingFont{
   font-family: 'The Nautigal', cursive;
   left: 0;
@@ -18,11 +39,32 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: 92px;
+  font-size: 72px;
   font-weight:bold;
 }
 
+.signup{
+  text-decoration: none;
+  background: -webkit-linear-gradient(-225deg,
+    #b5ce2a 0%,
+    #2dca18 48%,
+    #06680b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+}
 
+.signup:hover{
+background: -webkit-linear-gradient(-225deg,
+    #b5ce2a 0%,
+    #b5ce2a 48%,
+    #b5ce2a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+text-decoration: none;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
