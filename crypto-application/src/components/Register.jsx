@@ -102,16 +102,18 @@ const Register = ({fetchData}) => {
           if(password.length < 8 ){
             alert('password should be atleast more than 8 characters long')
           }         
-          if(email.length > 6 && password.length > 8 ){
-            navigate('/')
-          }
           //push to database
           const sendUser ={
             email:email,
             password:password
           }
-          axios.post('http://localhost:4000/Register', sendUser) 
+          axios.post('http://localhost:4000/register', sendUser) 
           .then(res => {
+            if(res){
+               navigate('/')
+            }else {
+              alert ('something went wrong')
+            }
             console.log(res)
           })
       }}/>

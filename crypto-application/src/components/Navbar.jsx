@@ -1,6 +1,9 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+
 
 const List = styled.li`
 float: right;
@@ -27,6 +30,19 @@ list-style-type: none;
   font-size:30px;
 `
 const Navbar = () => {
+  let navigate = useNavigate();
+
+  const logout = () => {
+  // localStorage.removeItem('token')
+  navigate('/')
+};
+
+
+// useEffect(() => {
+//  logout()
+// }, []);
+
+
   return (
     <div>
    <Unorderlist>

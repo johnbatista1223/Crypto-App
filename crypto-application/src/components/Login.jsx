@@ -49,40 +49,23 @@ margin-top: 120px;
     #06680b 100%);
   `
 
-const Login = ({fetchData}) => {
-  const [loading , setLoading]=useState(false);
+const Login = ({setIsLoggedIn}) => {
   const [email , setEmail]=useState('');
   const [password , setPassword]=useState('');
+  const [token , setToken]=useState(null)
  let navigate = useNavigate();
- console.log(fetchData)
-//  grab all images from image urls
-// const bitcoinUrl = fetchData[0].image;
-// const etherumUrl = fetchData[1].image;
-// const tetherUrl = fetchData[2].image;
-// const binancecoinUrl = fetchData[3].image;
-// const solanaUrl = fetchData[4].image;
-// const usdcoinUrl = fetchData[5].image;
-// const cardanoUrl = fetchData[6].image;
-// const rippleUrl = fetchData[7].image;
+//  console.log(fetchData)
+
 
  
   return (
     <div>
-      {/* <img src={bitcoinUrl} className='bitcoin' />
-      <img src={etherumUrl} className='etherum' />
-      <img src={tetherUrl} className='teather' />
-      <img src={binancecoinUrl} className='binance' />
-      <img src={solanaUrl} className='solana' />
-      <img src={usdcoinUrl} className='usdcoin' />
-      <img src={cardanoUrl} className='cardano' />
-      <img src={rippleUrl} className='ripple' /> */}
+      
        <h1 className='heading'>Crypto's</h1>
 
       <h1 className='headingFont'>Login</h1>
      
-      {loading ? 
-      (<h1>Loading ...</h1>)
-      :(<Form>
+      <Form>
         <LoginInput type="text" autocomplete="on" value={email} placeholder='Email ...'
         onChange={(e) => {
           setEmail(e.target.value)
@@ -94,30 +77,47 @@ const Login = ({fetchData}) => {
 
       <Button type="submit" value="Submit" onClick={ (e) => {
         e.preventDefault();
-        setLoading(true)
+
+        // const userfunction = (user) => {
+        //   if (user){
+        //     setToken(user.data.token)
+        //   localStorage.setItem('token', token)
+        //   }
+        // }
       
-          if(email.length < 6 ||email.length === 0 || password === 0 ){
+          if(email.length < 6 || email.length === 0 || password === 0 ){
             alert('Email needs to be more than 7 characters long and cannot be left blank ')
           }                
           if(password.length < 8 ){
             alert('password should be atleast more than 8 characters long')
           }         
-          if(email.length > 6 && password.length > 8 ){
-            navigate('/HomePage')
-          }
           //push to database
           const sendUser ={
             email:email,
             password:password
           }
-          // axios.post('http://localhost:4000/login', sendUser) 
-          // .then(res => {
-          //   console.log(res)
-          // })
+
+          
+
+          axios.post('http://localhost:4000/login', sendUser) 
+          .then(res => {
+           try{
+             if(res){
+               setIsLoggedIn(true)
+              //  userfunction(res)
+               navigate('/HomePage')
+             }else{
+               alert('something went wrong')
+             }
+           }catch(err){
+               console.log(err)
+             }
+            console.log(res)
+            
+          })
       }}/>
-      {/* <h3 className="notSignedIntext"> Not Signed Up Yet Click Link Below</h3> */}
       <Link to='/Register'> <h2 className='signup'>Sign up</h2></Link>
-      </Form>)}
+      </Form>)
   
     </div>
   )
