@@ -46,9 +46,10 @@ const Navbar = () => {
   return (
     <div>
    <Unorderlist>
-     
+   <List><Link to={'/'}>Logout</Link></List>  
   <List><Link to={'/Profile'}>Profile</Link></List>
-  <List><Link to={'/'}>Logout</Link></List>
+  
+  <List><Link to={'/Homepage'}>Crypto App</Link></List>
 </Unorderlist>
 
     </div>

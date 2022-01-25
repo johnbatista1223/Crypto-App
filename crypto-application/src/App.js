@@ -11,6 +11,12 @@ import axios from 'axios'
 import{ useEffect,useState } from 'react'
 import Profile from './components/Profile'
 import Register from './components/Register'
+import 'bootstrap/dist/css/bootstrap.css';
+import Navbar from './components/Navbar';
+
+
+
+
 
 
 
@@ -36,11 +42,12 @@ const [isLoggedIn, setIsLoggedIn]=useState(false)
   return (
     <div className="App">
       <BrowserRouter>
+      {isLoggedIn ?  <Navbar/> : ''}
       <Routes>
       <Route path="/" element={<Login fetchData={allData} setIsLoggedIn={setIsLoggedIn} />}/>
        <Route path="/Register" element={ <Register/>}/>
       <Route path="/HomePage" element={ isLoggedIn ? <HomePage fetchData={allData}/> : ''}/>
-      <Route path="/Profile" element={ isLoggedIn ? <Profile/> : ''}/>
+      <Route path="/Profile" element={  <Profile/> }/>
  
 
 

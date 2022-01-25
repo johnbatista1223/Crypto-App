@@ -23,6 +23,7 @@
   font-size: 200px;
   font-weight:bold;
 }
+
 .headingFont{
   font-family: 'The Nautigal', cursive;
   left: 0;
@@ -99,52 +100,6 @@ text-decoration: none;
     transform: rotate(360deg);
   }
 }
-.bitcoin{
-  height: 100px;
-  position: absolute;
-  top: 150px;
-  right: 700px;
-}
-.etherum{
-  height: 130px;
-  position: absolute;
-   top: 950px;
-   right: 680px;
-}
-.teather{
-  height: 100px;
-  position: absolute;
-   top: 250px;
-   right: 1100px;
-}
 
-.binance{
-  height: 100px;
-  position: absolute;
-   top: 880px;
-   right: 1100px;
-}
-.solana{
-  height: 100px;
-  position: absolute;
-   top: 250px;
-   right: 230px;
-}
-.usdcoin{
-  height: 100px;
-   position: absolute;
-   top: 550px;
-   right: 200px;
-}
-.cardano{
-height: 100px;
-position: absolute;
-   top: 550px;
-   right: 1200px;
-}
-.ripple{
-height: 100px;
- position: absolute;
-   top: 850px;
-   right: 230px;
-}
+
+

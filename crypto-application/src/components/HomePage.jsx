@@ -59,7 +59,6 @@ return data.name.toLowerCase().includes(search.toLowerCase())
 
   return (
     <div>
-      <Navbar/>
       <Header>Crypto's App</Header>
   <form>
     <label style={{fontSize:'30px', color: '#e2e2e2'}}>Search for Currency</label><br/>
