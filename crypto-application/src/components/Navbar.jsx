@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React,{useState} from 'react'
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -29,28 +29,29 @@ list-style-type: none;
   background-color: rgb(31, 29, 29);
   font-size:30px;
 `
-const Navbar = () => {
+const Navbar = ({isLoggedIn, setIsLoggedIn}) => {
   let navigate = useNavigate();
-
+  
   const logout = () => {
-  // localStorage.removeItem('token')
-  navigate('/')
+    setIsLoggedIn(false)
+      localStorage.clear()
+      navigate('/')
 };
 
 
-// useEffect(() => {
-//  logout()
-// }, []);
+
 
 
   return (
     <div>
-   <Unorderlist>
-   <List><Link to={'/'}>Logout</Link></List>  
-  <List><Link to={'/Profile'}>Profile</Link></List>
-  
-  <List><Link to={'/Homepage'}>Crypto App</Link></List>
-</Unorderlist>
+    {isLoggedIn &&  <Unorderlist> 
+   <List>
+     <Link to={'/'}  onClick={logout} >Logout</Link></List>  
+</Unorderlist> }
+{!isLoggedIn && <Unorderlist>
+     <List><Link to={'/Login'}>login</Link></List>
+</Unorderlist> }
+   
 
     </div>
 

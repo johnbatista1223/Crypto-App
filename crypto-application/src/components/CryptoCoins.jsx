@@ -22,11 +22,10 @@ const CryptoCoins = ({fetchAllData, indexOfFirstUser ,indexOfLastUser }) => {
   return (
     <div>   
       <Table>
-
         {fetchAllData
         .slice(indexOfFirstUser, indexOfLastUser)
-        .map((data)=> (
-          <div>
+        .map((data,index)=> (
+          <div key={index}>
             <div style={{borderTop: "1px solid #81cdba",width:'100%'}}></div>
     <br/>
   <TableRow key={data.id}>

@@ -46,20 +46,6 @@ margin-top: 120px;
     #2dca18 48%,
     #06680b 100%);
   `
-const BackButton = styled.button`
- width: 90px;
-  color: white;
-  padding: 14px 20px;
-
-float:right;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  background: -webkit-linear-gradient(-225deg,
-    #b5ce2a 0%,
-    #2dca18 48%,
-    #06680b 100%);
-`
 const Register = ({fetchData}) => {
   const [loading , setLoading]=useState(false);
   const [email , setEmail]=useState('');
@@ -72,12 +58,10 @@ const Register = ({fetchData}) => {
   return (
     <div>
     
-    <h1 className='heading'>Crypto's</h1>
+
 
       <h1 className='headingFont'>Register</h1>
-      <BackButton onClick={() => {
-        navigate('/')
-      }}>back</BackButton>
+      
      
       {loading ? 
       (<h1>Loading ...</h1>)

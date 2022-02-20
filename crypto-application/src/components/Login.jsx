@@ -60,8 +60,6 @@ const Login = ({setIsLoggedIn}) => {
  
   return (
     <div>
-      
-       <h1 className='heading'>Crypto's</h1>
 
       <h1 className='headingFont'>Login</h1>
      
@@ -77,14 +75,8 @@ const Login = ({setIsLoggedIn}) => {
 
       <Button type="submit" value="Submit" onClick={ (e) => {
         e.preventDefault();
+        setIsLoggedIn(true)
 
-        // const userfunction = (user) => {
-        //   if (user){
-        //     setToken(user.data.token)
-        //   localStorage.setItem('token', token)
-        //   }
-        // }
-      
           if(email.length < 6 || email.length === 0 || password === 0 ){
             alert('Email needs to be more than 7 characters long and cannot be left blank ')
           }                
@@ -96,15 +88,13 @@ const Login = ({setIsLoggedIn}) => {
             email:email,
             password:password
           }
-
-          
-
           axios.post('http://localhost:4000/login', sendUser) 
           .then(res => {
            try{
              if(res){
-               setIsLoggedIn(true)
-              //  userfunction(res)
+            const token = res.data.token
+            console.log(token)
+            localStorage.setItem("user", token);
                navigate('/HomePage')
              }else{
                alert('something went wrong')
@@ -116,7 +106,7 @@ const Login = ({setIsLoggedIn}) => {
             
           })
       }}/>
-      <Link to='/Register'> <h2 className='signup'>Sign up</h2></Link>
+      <Link to='/Register' style={{textDecoration: 'none'}}><h2 className='signup'>Sign up</h2></Link>
       </Form>)
   
     </div>

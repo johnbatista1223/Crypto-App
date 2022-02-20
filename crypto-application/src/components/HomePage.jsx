@@ -2,6 +2,8 @@ import React,{useState} from 'react'
 import Pagination from './Pagination'
 import styled from "styled-components";
 import CryptoCoins from './CryptoCoins';
+import { Link } from "react-router-dom";
+
 import Navbar from './Navbar';
 const Input = styled.input`
   padding-left: 16px;
@@ -38,9 +40,9 @@ const Header = styled.h1`
   -webkit-text-fill-color: transparent;
   font-size: 92px;
   font-weight:bold;
+ 
 `
-const HomePage = ({fetchData}) => {
-  console.log(fetchData[0])
+const HomePage = ({fetchData, setIsLoggedIn}) => {
   const [search, setsearch]=useState('')
   const [users, setUsers] = useState([]);
   const [CurrentPage, setCurrentPage] = useState(1);
@@ -48,10 +50,9 @@ const HomePage = ({fetchData}) => {
 
  const fetchAllData = fetchData.filter(data => {
    if(data){
-return data.name.toLowerCase().includes(search.toLowerCase())
+    return data.name.toLowerCase().includes(search.toLowerCase())
    }
  }) 
-  console.log(fetchData)
 
   const indexOfLastUser = CurrentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
@@ -59,7 +60,9 @@ return data.name.toLowerCase().includes(search.toLowerCase())
 
   return (
     <div>
-      <Header>Crypto's App</Header>
+      <Link to='/' style={{textDecoration: 'none'}}>
+     <Header>Crypto's App</Header></Link>
+     
   <form>
     <label style={{fontSize:'30px', color: '#e2e2e2'}}>Search for Currency</label><br/>
     <br/>
